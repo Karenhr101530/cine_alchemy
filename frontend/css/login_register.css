@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Estilos comunes */
+.login-container, .register-container {
+    display: flex;
+    width: 800px;
+    background: rgba(30, 30, 30, 0.9);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(229, 9, 20, 0.3),
+                0 0 40px rgba(229, 9, 20, 0.2),
+                0 0 60px rgba(229, 9, 20, 0.1);
+    transition: box-shadow 0.3s ease;
+    position: relative;
+}
+
+.login-container:hover, .register-container:hover {
+    box-shadow: 0 0 25px rgba(229, 9, 20, 0.4),
+                0 0 50px rgba(229, 9, 20, 0.3),
+                0 0 75px rgba(229, 9, 20, 0.2);
+}
+
+.login-box, .register-box {
+    width: 50%;
+    padding: 2rem;
+}
+
+.image-side {
+    width: 50%;
+    background: url('https://via.placeholder.com/400x600') center/cover no-repeat;
+    position: relative;
+}
+
+.image-side::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(229, 9, 20, 0.3), rgba(30, 30, 30, 0.8));
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 2;
+}
+
+.close-btn:hover {
+    color: #e50914;
+    transform: scale(1.1);
+}
+
+h2 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.input-group {
+    margin-bottom: 1.2rem;
+    position: relative;
+}
+
+.input-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    transition: color 0.3s;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #e50914;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.input-group input:focus + i {
+    color: #e50914;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: #e50914;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 1rem;
+}
+
+button[type="submit"]:hover {
+    background: #b30710;
+    transform: translateY(-2px);
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.signup-link a {
+    color: #e50914;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+.terms {
+    margin: 1rem 0;
+    color: #999;
+    font-size: 0.85rem;
+}
+
+.terms a {
+    color: #e50914;
+    text-decoration: none;
+}
+
+.terms a:hover {
+    text-decoration: underline;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.login-link a {
+    color: #e50914;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .login-container, .register-container {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .image-side {
+        display: none;
+    }
+
+    .login-box, .register-box {
+        width: 100%;
+    }
+}
