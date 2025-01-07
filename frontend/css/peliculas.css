@@ -1,0 +1,386 @@
+/*Peliculas.css*/
+/* General */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: #fff;
+}
+
+/* Título de la sección */
+.section-title {
+    color: var(--text);
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Grid de las películas */
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas en pantallas grandes */
+    gap: 1.5rem;
+    padding: 0 1rem; /* Espacio a los bordes izquierdo y derecho */
+}
+
+/* Estilo de las tarjetas */
+.movies-card {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 1/1.4; /* Reducir la altura de las tarjetas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.movies-card:hover {
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+/* Modificar márgenes solo en la primera y última tarjeta en la fila */
+.movies-card:nth-child(4n+1) {
+    margin-left: 1rem; /* Espacio a la izquierda para la primera tarjeta de cada fila */
+}
+
+.movies-card:nth-child(4n) {
+    margin-right: 1rem; /* Espacio a la derecha para la última tarjeta de cada fila */
+}
+
+/* Imagen de la película */
+.movies-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Información de la película (cuando pasa el hover) */
+.movies-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.movies-card:hover .movies-info {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Contenedor de la vista previa */
+.preview-container {
+    height: 45%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Contenido de la información */
+.info-content {
+    padding: 1.2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, var(--overlay), var(--primary));
+}
+
+/* Títulos y descripciones */
+.movies-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.movies-description {
+    color: #ddd;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Precio de la película */
+.movies-price {
+    font-size: 1.4rem;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+/* Botón de acción (añadir al carrito) */
+.actions-container {
+    margin-top: auto;
+}
+
+.btn-cart {
+    width: 100%;
+    background: linear-gradient(145deg, #1399df, #0e7bb8); 
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 10px; /* Bordes redondeados */
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease; 
+    box-shadow: 0 5px 15px rgba(19, 153, 223, 0.2);
+}
+
+.btn-cart:hover {
+    background: linear-gradient(145deg, #0e7bb8, #1399df); 
+    transform: translateY(-4px); 
+    box-shadow: 0 8px 20px rgba(19, 153, 223, 0.3); 
+}
+
+.btn-cart:active {
+    transform: translateY(0); /* Efecto de botón presionado */
+    box-shadow: 0 2px 5px rgba(19, 153, 223, 0.3); /* Sombra más suave al presionar */
+}
+
+/* Media Queries para hacerlo responsive */
+
+/* Pantallas grandes */
+@media (max-width: 1200px) {
+    .movies-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    }
+
+    .movies-card {
+        height: 350px; /* Ajustar altura de las tarjetas */
+    }
+}
+
+/* Pantallas medianas */
+@media (max-width: 992px) {
+    .movies-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+    }
+
+    .movies-card {
+        height: 300px; /* Ajustar altura de las tarjetas */
+    }
+}
+
+/* Pantallas pequeñas */
+@media (max-width: 768px) {
+    .movies-grid {
+        grid-template-columns: 1fr; /* 1 columna */
+    }
+
+    .movies-card {
+        height: 250px; /* Ajustar altura de las tarjetas */
+    }
+
+    .btn-cart {
+        font-size: 0.9rem; /* Ajustar tamaño del botón */
+    }
+}
+
+/* Muy pequeñas pantallas (teléfonos en modo apaisado) */
+@media (max-width: 480px) {
+    .movies-card {
+        height: 230px; /* Ajustar altura de las tarjetas */
+    }
+
+    .btn-cart {
+        font-size: 0.8rem; /* Ajustar tamaño del botón */
+    }
+}
+
+/* Estilos del Ícono del Carrito */
+.cart-icon-container {
+    position: relative;
+    cursor: pointer;
+    margin-left: 1.5rem;
+}
+
+.cart-icon-container i {
+    font-size: 1.5rem;
+    color: var(--light-text);
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* Estilos del Modal */
+.cart-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1100;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-modal.active {
+    display: flex;
+}
+
+.cart-modal-content {
+    background: var(--dark-bg);
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modalSlideIn 0.3s ease;
+}
+
+.cart-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-header h2 {
+    margin: 0;
+    color: var(--light-text);
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    color: var(--light-text);
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.cart-items {
+    padding: 1.5rem;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    animation: fadeIn 0.3s ease;
+}
+
+.cart-item-image {
+    width: 80px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 1rem;
+}
+
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-item-title {
+    color: var(--light-text);
+    margin-bottom: 0.5rem;
+}
+
+.cart-item-price {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.remove-item {
+    background: none;
+    border: none;
+    color: #ff4444;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-left: 1rem;
+}
+
+.cart-footer {
+    padding: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    color: var(--light-text);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.cart-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-checkout, .btn-continue {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    flex: 1;
+}
+
+.btn-checkout {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-continue {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

@@ -1,9 +1,15 @@
 import express from "express";
+import { listMovies } from "../controllers/moviesController.js";
 
+/* Enrutador express */
 const router = express.Router();
 
-router.post("/list", (req, res) => {
-  console.log("Listado de productos");
-});
+/* EN ESTE ARCHIVO DEFINIMOS LOS ENDPOINTS (PUNTOS FINALES) */
+
+/* Endpoint: http://localhost:3000/api/movies/list */
+
+/* router.metododelendpoint('nombredelendpoint', unaFuncion(){..}) */
+
+router.get("/list", listMovies); 
 
 export default router;

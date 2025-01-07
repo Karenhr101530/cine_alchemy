@@ -40,6 +40,3 @@ export const register = async (req, res) => {
     res.status(500).json({ message: "Algo salió mal" });
   }
 };
- // Primer paso cargar js
- // Segundo paso validaciones
- // Tercer paso tener en cuenta retornar cuando las validaciones falle

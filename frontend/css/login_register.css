@@ -41,8 +41,15 @@ body {
 
 .image-side {
     width: 50%;
-    background: url('https://via.placeholder.com/400x600') center/cover no-repeat;
     position: relative;
+    overflow: hidden; /* Evita que la imagen se desborde */
+}
+
+.image-side img {
+    width: 100%; /* La imagen ocupa todo el ancho del contenedor */
+    height: 100%; 
+    object-fit: cover; /* Hace que la imagen cubra todo el contenedor sin distorsionarse */
+    border-radius: 10px; 
 }
 
 .image-side::before {
@@ -192,7 +199,7 @@ button[type="submit"]:hover {
     }
 
     .image-side {
-        display: none;
+        display: none; /* Oculta la imagen en pantallas pequeñas */
     }
 
     .login-box, .register-box {

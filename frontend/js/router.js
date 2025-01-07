@@ -30,10 +30,11 @@ export const handleRouting = async (route) => {
       break;
     /* Rutas privadas */
     case "/peliculas":
-      if (verifiedToken()) {
+    if (verifiedToken()) {
         app.innerHTML = await (await fetch("views/peliculas.html")).text();
-      }
-      break;
+        loadScript("peliculas/peliculas");
+    }
+    break;
     case "/compras":
         app.innerHTML = await (await fetch("views/compras.html")).text();
       break;
@@ -79,11 +80,13 @@ const toogleNavButtons = () => {
   const register = document.getElementById("registerButton");
   const logoutButton = document.getElementById("logoutButton");
   const peliculasButton = document.getElementById("peliculasButton");
+  const cartIcon = document.getElementById("cartIcon");
 
   if (token) {
     /* Activos */
     logoutButton.style.display = "block";
     peliculasButton.style.display = "block";
+    cartIcon.style.display = "block";
     /* Inactivos */
     loginButton.style.display = "none";
     register.style.display = "none";
@@ -94,5 +97,6 @@ const toogleNavButtons = () => {
     /* Inactivos */
     logoutButton.style.display = "none";
     peliculasButton.style.display = "none";
+    cartIcon.style.display = "none";
   }
 };
