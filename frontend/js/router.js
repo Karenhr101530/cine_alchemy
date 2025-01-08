@@ -6,14 +6,20 @@ export const navigateTo = (route) => {
 
 /* Enrutador */
 export const handleRouting = async (route) => {
+
   toogleNavButtons();
   const app = document.getElementById("app");
+
+  /* Borrar los js que cargabamos dinamicamente */
+  const scripts = document.querySelectorAll("script[src]");
+  scripts.forEach(script => script.remove());
+
   switch (route) {
     /* Rutas publicas */
     case "/":
       app.innerHTML = await (await fetch("views/home.html")).text();
       break;
-      case "/index.html":
+    case "/index.html":
       app.innerHTML = await (await fetch("views/home.html")).text();
       break;
     case "/login":
@@ -30,13 +36,19 @@ export const handleRouting = async (route) => {
       break;
     /* Rutas privadas */
     case "/peliculas":
-    if (verifiedToken()) {
+      if (verifiedToken()) {
         app.innerHTML = await (await fetch("views/peliculas.html")).text();
         loadScript("peliculas/peliculas");
-    }
-    break;
+      }
+      break;
+    case "/carrito":
+      if (verifiedToken()) {
+        app.innerHTML = await (await fetch("views/carrito.html")).text();
+        loadScript("carrito/carrito");
+      }
+      break;
     case "/compras":
-        app.innerHTML = await (await fetch("views/compras.html")).text();
+      app.innerHTML = await (await fetch("views/compras.html")).text();
       break;
     default:
       app.innerHTML = `<h1>404 - Not Found</h1>`;
@@ -45,16 +57,7 @@ export const handleRouting = async (route) => {
 
 /* Cargar js dinámicamente */
 const loadScript = (viewName) => {
-  const scriptSrc = `js/${viewName}.js`;
-
-  /* Verificar si el script ya existe */
-  const existingScript = Array.from(document.scripts).find(
-    (script) => script.src === new URL(scriptSrc, document.baseURI).href
-  );
-
-  if (existingScript) {
-    return;
-  }
+  const scriptSrc = `js/${viewName}.js?timestamp=${new Date().getTime()}`;
 
   const script = document.createElement("script");
   script.src = scriptSrc;

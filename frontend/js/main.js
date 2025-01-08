@@ -16,12 +16,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Efecto de navbar al hacer scroll
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
   const navbar = document.querySelector('.navbar');
   if (window.scrollY > 50) {
-      navbar.classList.add('scrolled');
+    navbar.classList.add('scrolled');
   } else {
-      navbar.classList.remove('scrolled');
+    navbar.classList.remove('scrolled');
   }
 });
 
@@ -31,11 +31,11 @@ function createFloatingMovies() {
   const numberOfCards = 10;
 
   for (let i = 0; i < numberOfCards; i++) {
-      const card = document.createElement('div');
-      card.classList.add('movie-card');
-      card.style.left = `${Math.random() * 100}%`;
-      card.style.animationDelay = `${Math.random() * 15}s`;
-      container.appendChild(card);
+    const card = document.createElement('div');
+    card.classList.add('movie-card');
+    card.style.left = `${Math.random() * 100}%`;
+    card.style.animationDelay = `${Math.random() * 15}s`;
+    container.appendChild(card);
   }
 }
 
