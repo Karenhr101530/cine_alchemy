@@ -1,8 +1,20 @@
-<div class="container">
-    <H1>carrito</H1>
-    <ul id="listMovies">
-        <!-- ... -->
-    </ul>
-</div>
+<div class="container main-container" >
+    <div class="cart-container">
+      <div class="cart-header">
+        <h1>Tu Carrito</h1>
+        <p id="cart-summary">Tienes 0 artículo(s)</p>
+      </div>
+      <div id="cart-items">
+        <!-- Items del carrito se agregarán aquí -->
+      </div>
+    </div>
 
-<!-- TODO: AGREGAR BOTON DE COMPRAR Y DE VACIAR CARRITO -->
+    <div class="summary-container">
+      <h2>Resumen de Compra</h2>
+      <div class="summary-details">
+        <p class="total">Total: <span id="totalCarritoShow">$0</span></p>
+      </div>
+      <button class="btn btn-primary" id="checkout-btn">Proceder al Pago</button>
+      <button class="btn btn-secondary" id="continue-shopping">Seguir Comprando</button>
+    </div>
+  </div>

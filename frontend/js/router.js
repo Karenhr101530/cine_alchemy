@@ -47,9 +47,6 @@ export const handleRouting = async (route) => {
         loadScript("carrito/carrito");
       }
       break;
-    case "/compras":
-      app.innerHTML = await (await fetch("views/compras.html")).text();
-      break;
     default:
       app.innerHTML = `<h1>404 - Not Found</h1>`;
   }
