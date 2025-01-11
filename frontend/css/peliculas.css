@@ -1,4 +1,3 @@
-/*Peliculas.css*/
 /* General */
 body {
     margin: 0;
@@ -18,18 +17,19 @@ body {
 /* Grid de las películas */
 .movies-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columnas en pantallas grandes */
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
-    padding: 0 1rem; /* Espacio a los bordes izquierdo y derecho */
+    padding: 0 1rem;
 }
 
 /* Estilo de las tarjetas */
 .movies-card {
     position: relative;
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
     cursor: pointer;
-    aspect-ratio: 1/1.4; /* Reducir la altura de las tarjetas */
+    aspect-ratio: 3/4;
+    width: 100%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
@@ -39,15 +39,6 @@ body {
     z-index: 10;
 }
 
-/* Modificar márgenes solo en la primera y última tarjeta en la fila */
-.movies-card:nth-child(4n+1) {
-    margin-left: 1rem; /* Espacio a la izquierda para la primera tarjeta de cada fila */
-}
-
-.movies-card:nth-child(4n) {
-    margin-right: 1rem; /* Espacio a la derecha para la última tarjeta de cada fila */
-}
-
 /* Imagen de la película */
 .movies-image {
     width: 100%;
@@ -55,19 +46,22 @@ body {
     object-fit: cover;
 }
 
-/* Información de la película (cuando pasa el hover) */
+/* Información de la película (hover) */
 .movies-info {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: black;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(3px);
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
 }
 
 .movies-card:hover .movies-info {
@@ -77,137 +71,136 @@ body {
 
 /* Contenedor de la vista previa */
 .preview-container {
-    height: 45%;
-    width: 100%;
-    overflow: hidden;
     position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin-bottom: 1rem;
 }
 
+/* Imagen con borde borroso */
 .preview-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center top;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: filter 0.3s ease;
+    border-radius: 10px;
 }
 
-/* Contenido de la información */
-.info-content {
-    padding: 1.2rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background: linear-gradient(to bottom, var(--overlay), var(--primary));
+/* Efecto de gradiente para los bordes */
+.preview-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 100%);
+    pointer-events: none; /* Para no interferir con la interacción */
 }
 
-/* Títulos y descripciones */
+/* Títulos */
 .movies-title {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: bold;
-    margin-bottom: 0.5rem;
     color: #fff;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.4;
+    text-align: center;
 }
 
+/* Descripción */
 .movies-description {
     color: #ddd;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    text-align: justify;
+    height: auto;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    margin: 0.5rem 0;
+    padding: 0 0.5rem;
 }
 
-/* Precio de la película */
-.movies-price {
-    font-size: 1.4rem;
-    color: #fff;
-    font-weight: bold;
-    margin-bottom: 1rem;
+/* Metadata */
+.movie-metadata {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0.8rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Botón de acción (añadir al carrito) */
-.actions-container {
+.metadata-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #aaa;
+    font-size: 0.85rem;
+}
+
+.metadata-item i {
+    font-size: 1rem;
+    color: #1399df;
+}
+
+/* Contenedor de acciones */
+.action-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1rem;
     margin-top: auto;
 }
 
+/* Precio */
+.movies-price {
+    font-size: 1rem;
+    color: #1399df;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Botón de carrito */
 .btn-cart {
-    width: 100%;
-    background: linear-gradient(145deg, #1399df, #0e7bb8); 
+    width: 80%;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #1399df, #0e7bb8);
     color: white;
     border: none;
     padding: 0.8rem;
-    border-radius: 10px; /* Bordes redondeados */
-    font-size: 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    transition: all 0.3s ease; 
-    box-shadow: 0 5px 15px rgba(19, 153, 223, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-cart i {
+    font-size: 1rem;
 }
 
 .btn-cart:hover {
-    background: linear-gradient(145deg, #0e7bb8, #1399df); 
-    transform: translateY(-4px); 
-    box-shadow: 0 8px 20px rgba(19, 153, 223, 0.3); 
+    background: linear-gradient(135deg, #0e7bb8, #1399df);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(19, 153, 223, 0.2);
 }
 
 .btn-cart:active {
-    transform: translateY(0); /* Efecto de botón presionado */
-    box-shadow: 0 2px 5px rgba(19, 153, 223, 0.3); /* Sombra más suave al presionar */
-}
-
-/* Media Queries para hacerlo responsive */
-
-/* Pantallas grandes */
-@media (max-width: 1200px) {
-    .movies-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 columnas */
-    }
-
-    .movies-card {
-        height: 350px; /* Ajustar altura de las tarjetas */
-    }
-}
-
-/* Pantallas medianas */
-@media (max-width: 992px) {
-    .movies-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columnas */
-    }
-
-    .movies-card {
-        height: 300px; /* Ajustar altura de las tarjetas */
-    }
-}
-
-/* Pantallas pequeñas */
-@media (max-width: 768px) {
-    .movies-grid {
-        grid-template-columns: 1fr; /* 1 columna */
-    }
-
-    .movies-card {
-        height: 250px; /* Ajustar altura de las tarjetas */
-    }
-
-    .btn-cart {
-        font-size: 0.9rem; /* Ajustar tamaño del botón */
-    }
-}
-
-/* Muy pequeñas pantallas (teléfonos en modo apaisado) */
-@media (max-width: 480px) {
-    .movies-card {
-        height: 230px; /* Ajustar altura de las tarjetas */
-    }
-
-    .btn-cart {
-        font-size: 0.8rem; /* Ajustar tamaño del botón */
-    }
+    transform: translateY(0);
 }
 
 /* Estilos del Ícono del Carrito */
@@ -339,36 +332,9 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1.5rem;
-    color: var(--light-text);
-    font-size: 1.2rem;
-    font-weight: bold;
 }
 
-.cart-actions {
-    display: flex;
-    gap: 1rem;
-}
-
-.btn-checkout, .btn-continue {
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 600;
-    flex: 1;
-}
-
-.btn-checkout {
-    background: var(--primary-color);
-    color: white;
-}
-
-.btn-continue {
-    background: transparent;
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
-}
-
+/* Animaciones */
 @keyframes modalSlideIn {
     from {
         transform: translateY(-20px);
@@ -381,6 +347,38 @@ body {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .movies-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .preview-container {
+        height: 180px;
+    }
+}
+
+@media (max-width: 900px) {
+    .movies-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .preview-container {
+        height: 160px;
+    }
+}
+
+@media (max-width: 600px) {
+    .movies-grid {
+        grid-template-columns: 1fr;
+    }
+    .preview-container {
+        height: 200px;
+    }
 }

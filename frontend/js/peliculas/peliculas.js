@@ -37,6 +37,7 @@ await Promise.all(movies.map(async movie => {
                         ${json.overview}
                     </p>
                     <p class="movies-price">$${movie.precio}</p>
+                    <br>
                     <div class="actions-container">
                         <button class="btn-cart buyMovie" data-movie-id="${json.id}" data-movie-price="${movie.precio}">
                             🛒 Añadir al carrito
