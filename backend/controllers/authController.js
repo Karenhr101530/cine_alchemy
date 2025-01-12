@@ -17,9 +17,7 @@ export const login = async (req, res) => {
       return res.status(400).json({ message: "Credenciales inválidas" });
     } 
     //Crear token
-    const token = jwt.sign({ id: user.id, name: user.name }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    });
+    const token = jwt.sign({ id: user.id, name: user.name }, process.env.JWT_SECRET, {});
     res.json({ token }); //Responder con el token
   } catch (err) {
     res.status(500).json({ message: "Algo salió mal" });
