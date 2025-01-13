@@ -1,5 +1,5 @@
 import express from "express";
-import { listMovies } from "../controllers/moviesController.js";
+import { listMovies, findMovie } from "../controllers/moviesController.js";
 
 /* Enrutador express */
 const router = express.Router();
@@ -11,5 +11,6 @@ const router = express.Router();
 /* router.metododelendpoint('nombredelendpoint', unaFuncion(){..}) */
 
 router.get("/list", listMovies); 
+router.post("/findMovie", findMovie); 
 
 export default router;

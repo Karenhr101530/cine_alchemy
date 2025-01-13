@@ -19,11 +19,21 @@ export const createBuys = (req, res) => {
 };
 
 export const findBuy = async (req, res) => {
-  const { movie_id } = req.body;
+  const { buyId } = req.body;
   try {
-    const buy = await Buys.findBuy(movie_id);
-    res.status(200).json({buy});
+    const buy = await Buys.findBuy(buyId);
+    res.status(200).json({ buy });
   } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Algo salió mal" });
+  }
+};
+
+export const listBuys = async (req, res) => {
+  try {
+    const buys = await Buys.list();
+    res.status(200).json({ buys });
+  } catch (error) {
     console.log(err);
     res.status(500).json({ message: "Algo salió mal" });
   }

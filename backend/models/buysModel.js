@@ -9,11 +9,18 @@ const Buys = {
     return result;
   },
   findBuy: async (movie_id) => {
-    const [rows] = await db.query("SELECT * FROM buys WHERE id = ?", [
+    const [rows] = await db.query(`
+      SELECT 
+        *
+      FROM buys WHERE id = ?`, [
       movie_id,
     ]);
     // console.log(rows)
     return rows[0];
+  },
+  list: async () => {
+    const [rows] = await db.query("SELECT * FROM buys");
+    return rows;
   }
 };
 

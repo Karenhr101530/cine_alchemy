@@ -9,3 +9,14 @@ export const listMovies = async (req, res) => {
         res.status(500).json({ message: "Algo salió mal" });
     }
 };
+
+export const findMovie = async (req, res) => {
+    const { movieId } = req.body;
+    try {
+        const movie = await Movie.findMovie(movieId);
+        res.status(200).json({ movie });
+    } catch (error) {
+        console.log(err);
+        res.status(500).json({ message: "Algo salió mal" });
+    }
+};
