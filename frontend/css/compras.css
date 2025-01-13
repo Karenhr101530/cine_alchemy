@@ -1,0 +1,96 @@
+:root {
+    --primary-color: #e50914;
+    --primary-dark: #b20710;
+    --background-dark: #000000;
+    --text-light: #f5f5f5;
+    --border-color: #1f1f1f;
+    --header-background: rgba(229, 9, 20, 0.2); /* Transparente */
+    --hover-background: rgba(229, 9, 20, 0.1); /* Para filas al pasar el cursor */
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-dark);
+}
+
+/* Estilo de la tabla */
+table {
+    width: 100%; /* Ancho de la tabla */
+    margin: 20px auto; /* Centrada */
+    border:  var(--border-color); /* Borde de 10px */
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 4px 8px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(178, 7, 16, 0.3);
+}
+    
+
+/* Encabezados de la tabla */
+th {
+    padding: 12px 15px;
+    text-align: center;
+    background-color: var(--header-background);
+    color: var(--text-light);
+    font-size: 1rem;
+    font-weight: 300; /* Letras más delgadas */
+    border-radius: 1px;
+}
+
+/* Celdas de la tabla */
+td {
+    padding: 12px 15px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 300; /* Letras más delgadas */
+}
+
+/* Estilo al pasar el cursor sobre una fila */
+tr:hover {
+    background-color: var(--hover-background);
+    transition: background-color 0.3s ease;
+}
+
+/* Imagen en las celdas */
+td img {
+    width: 60px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Sombra en las imágenes */
+}
+
+/* Botón de acciones */
+button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 10px;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* Scroll en el contenedor de la tabla */
+table::-webkit-scrollbar {
+    width: 6px;
+}
+
+table::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+}
+
+table::-webkit-scrollbar-track {
+    background: var(--background-dark);
+}

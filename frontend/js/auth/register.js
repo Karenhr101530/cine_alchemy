@@ -17,7 +17,7 @@ document.getElementById("registerForm").addEventListener("click", async (e) => {
       text: "Todos los campos son obligatorios.",
       showConfirmButton: false,
       toast: true,
-      position: "top-end",
+      position: "top",
       timer: 3000,
       timerProgressBar: true,
     });
@@ -33,7 +33,7 @@ document.getElementById("registerForm").addEventListener("click", async (e) => {
       text: "Ingresa un correo electrónico válido.",
       showConfirmButton: false,
       toast: true,
-      position: "top-end",
+      position: "top",
       timer: 3000,
       timerProgressBar: true,
     });
@@ -48,7 +48,7 @@ document.getElementById("registerForm").addEventListener("click", async (e) => {
       text: "La contraseña debe tener al menos 8 caracteres.",
       showConfirmButton: false,
       toast: true,
-      position: "top-end",
+      position: "top",
       timer: 3000,
       timerProgressBar: true,
     });
@@ -64,7 +64,7 @@ document.getElementById("registerForm").addEventListener("click", async (e) => {
       text: "Las contraseñas no coinciden.",
       showConfirmButton: false,
       toast: true,
-      position: "top-end",
+      position: "top",
       timer: 3000,
       timerProgressBar: true,
     });
@@ -85,7 +85,7 @@ document.getElementById("registerForm").addEventListener("click", async (e) => {
       text: "Cuenta creada correctamente. Ahora inicia sesión.",
       showConfirmButton: false,
       toast: true,
-      position: "top-end",
+      position: "top",
       timer: 3000,
       timerProgressBar: true,
     });
@@ -99,7 +99,7 @@ document.getElementById("registerForm").addEventListener("click", async (e) => {
       text: errorData.message || "No se pudo crear la cuenta.",
       showConfirmButton: false,
       toast: true,
-      position: "top-end",
+      position: "top",
       timer: 3000,
       timerProgressBar: true,
     });

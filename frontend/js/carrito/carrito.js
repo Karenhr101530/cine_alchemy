@@ -164,7 +164,7 @@ document.getElementById('payConfirm').addEventListener('click', async () => {
             text: "Por favor, completa todos los campos",
             showConfirmButton: false,
             toast: true,
-            position: "top-start",
+            position: "top",
             timer: 3000,
             timerProgressBar: true,
         });
@@ -215,7 +215,7 @@ document.getElementById('payConfirm').addEventListener('click', async () => {
                 text: "Algo salió mal",
                 showConfirmButton: false,
                 toast: true,
-                position: "top-start",
+                position: "top",
                 timer: 3000,
                 timerProgressBar: true,
             });

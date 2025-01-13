@@ -120,12 +120,16 @@ const toogleNavButtons = () => {
   const logoutButton = document.getElementById("logoutButton");
   const peliculasButton = document.getElementById("peliculasButton");
   const cartIcon = document.getElementById("cartIcon");
+  const cartCount = document.getElementById("cart-count");
+  const comprasButton = document.getElementById("comprasButton");
 
   if (token) {
     /* Activos */
     logoutButton.style.display = "block";
     peliculasButton.style.display = "block";
     cartIcon.style.display = "block";
+    cartCount.style.display = "inline"; // Asegura que el contador sea visible
+    comprasButton.style.display = "block";
     /* Inactivos */
     loginButton.style.display = "none";
     register.style.display = "none";
@@ -137,5 +141,7 @@ const toogleNavButtons = () => {
     logoutButton.style.display = "none";
     peliculasButton.style.display = "none";
     cartIcon.style.display = "none";
+    cartCount.style.display = "none"; // Oculta el contador para usuarios no autenticados
+    comprasButton.style.display = "none";
   }
 };

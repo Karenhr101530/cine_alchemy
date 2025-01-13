@@ -13,7 +13,7 @@ document.getElementById("loginForm").addEventListener("click", async (e) => {
       text: "Campos requeridos.",
       showConfirmButton: false,
       toast: true,
-      position: "top-end",
+      position: "top",
       timer: 3000,
       timerProgressBar: true,
     });
@@ -39,7 +39,7 @@ document.getElementById("loginForm").addEventListener("click", async (e) => {
       text: "Credenciales invalidas.",
       showConfirmButton: false,
       toast: true,
-      position: "top-end",
+      position: "top",
       timer: 3000,
       timerProgressBar: true,
     });

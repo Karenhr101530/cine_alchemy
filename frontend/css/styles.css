@@ -93,6 +93,7 @@ body {
   display: flex;
   gap: 1.5rem;
   align-items: center;
+  position:relative;
 }
 
 .nav-btn {
@@ -321,22 +322,24 @@ body {
   }
 }
 
-/* Cart styles */
+/* Estilos para el contenedor del carrito */
 .cart-icon-container {
   position: relative;
-  cursor: pointer;
   margin-left: 1.5rem;
+  cursor: pointer;
 }
 
+/* Estilos para el ícono del carrito */
 .cart-icon-container i {
   font-size: 1.5rem;
   color: var(--light-text);
 }
 
-.cart-count {
+/* Estilos para el contador */
+#cart-count {
   position: absolute;
-  top: -8px;
-  right: -8px;
+  top: -10px;
+  right: -10px;
   background: var(--primary-color);
   color: white;
   border-radius: 50%;
@@ -419,3 +422,17 @@ body {
     grid-template-columns: 1fr;
   }
 }
+/* Estilos del footer */
+.footer {
+  color: #ccc;
+  text-align: center;
+  padding: 0.5rem 2rem; /* Ajuste del padding para hacerlo más delgado pero cómodo */
+  font-size: 0.9rem;
+  margin-top: auto; /* Mantenerlo abajo */
+}
+
+.footer p {
+  margin: 0;
+  font-weight: 500;
+}
+

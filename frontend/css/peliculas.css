@@ -1,3 +1,8 @@
+:root{
+    --primary-color: #e50914;
+    --primary-dark: #b20710;
+    --background-shadow: 0 8px 25px rgba(229, 9, 20, 0.6);
+}
 /* General */
 body {
     margin: 0;
@@ -165,7 +170,7 @@ body {
 /* Precio */
 .movies-price {
     font-size: 1rem;
-    color: #1399df;
+    color: var(--primary-dark);
     font-weight: bold;
     text-align: center;
 }
@@ -174,7 +179,7 @@ body {
 .btn-cart {
     width: 80%;
     margin: 0 auto;
-    background: linear-gradient(135deg, #1399df, #0e7bb8);
+    background: var(--primary-color);
     color: white;
     border: none;
     padding: 0.8rem;
@@ -194,9 +199,9 @@ body {
 }
 
 .btn-cart:hover {
-    background: linear-gradient(135deg, #0e7bb8, #1399df);
+    background: var(--primary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(19, 153, 223, 0.2);
+    box-shadow:var(--background-shadow);
 }
 
 .btn-cart:active {

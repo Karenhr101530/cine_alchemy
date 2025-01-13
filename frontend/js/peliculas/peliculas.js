@@ -81,7 +81,7 @@ btnsBuyMovie.forEach(btn => {
                     text: "No puedes agregarla de nuevo",
                     showConfirmButton: false,
                     toast: true,
-                    position: "top-start",
+                    position: "top",
                     timer: 3000,
                     timerProgressBar: true,
                 });
@@ -109,7 +109,7 @@ btnsBuyMovie.forEach(btn => {
             text: "wow!!!",
             showConfirmButton: false,
             toast: true,
-            position: "top-start",
+            position: "top",
             timer: 3000,
             timerProgressBar: true,
         });
