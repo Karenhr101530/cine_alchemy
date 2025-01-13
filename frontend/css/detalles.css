@@ -1,76 +1,165 @@
+/* Reset */
+body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    color: white;
+    overflow: hidden;
+}
+
+/* Contenedor principal */
 .main-content {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    display: flex;
+    align-items: flex-end; /* Contenido alineado al fondo */
+    padding: 4rem; /* Espaciado interior */
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Video de fondo */
+.video-background {
+    position: absolute;
+    top: -15%; /* Ajusta el video hacia arriba */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* El video queda detrás del contenido */
+    overflow: hidden;
+}
+
+.video-background iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 177.77%; /* Mantiene la proporción 16:9 */
+    height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover; /* El video ocupa todo el área sin deformarse */
+    pointer-events: none; /* El usuario no interactúa con el video */
+}
+
+/* Superposición de contenido */
+.overlay {
+    position: relative;
+    z-index: 2;
+    max-width: auto;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent 50%);
     padding: 2rem;
-    background: linear-gradient(to right, rgba(0,0,0,0.8), transparent),
-                url('/api/placeholder/1200/675') no-repeat center center;
-    background-size: cover;
-    min-height: 80vh;
 }
 
+/* Título principal */
 .title {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
+    font-size: 4rem;
     font-weight: bold;
-    font-family: Georgia, serif;
+    margin-bottom: 0.5rem;
 }
 
+/* Subtítulo */
+.subtitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1ed760; /* Verde brillante */
+    margin-bottom: 1rem;
+}
 
+/* Descripción */
 .description {
-    max-width: 800px;
+    font-size: 1.2rem;
     line-height: 1.6;
     margin-bottom: 2rem;
-    color: #e0e0e0;
 }
 
+/* Metadatos */
 .metadata {
     display: flex;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     margin-bottom: 2rem;
-    color: #a0a0a0;
+    font-size: 0.9rem;
 }
 
 .badge {
-    background: rgba(255,255,255,0.1);
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
 }
 
-.actions {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.play-btn {
-    background: white;
-    color: black;
-    border: none;
-    padding: 0.8rem 2rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.icon-btn {
-    background: rgba(255,255,255,0.1);
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
+/* Estilo de las etiquetas */
 .tags {
     display: flex;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 0.6rem;
 }
 
 .tag {
-    background: rgba(255,255,255,0.1);
-    padding: 0.3rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
+    text-align: center;
+    background:#e50914; 
+    padding: 0.2rem 0.3rem;               
+    border-radius: 10px;                    
+    font-size: 0.9rem;                      
+    text-transform: capitalize;             /* Para que las primeras letras sean mayúsculas */
+}
+
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .description {
+        font-size: 1rem;
+    }
+
+    .metadata, .tags {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+/* Contenedor del título y el ícono */
+.title-container {
+    display: flex;
+    align-items: center; /* Alineación vertical */
+    justify-content: flex-start; /* Alineación horizontal al inicio */
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+/* Estilo para el ícono del trailer */
+.trailer-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%;
+    background-color: #e50914;
+    font-size: 20px; 
+    cursor: pointer;
+    margin-left: 10px; /* Espacio entre el título y el ícono */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones para suavizar los efectos */
+}
+
+.trailer-icon:hover {
+    background-color: darkred; /* Rojo más oscuro al pasar el mouse */
+    transform: scale(1.2); /* Aumentamos un poco el tamaño del ícono al pasar el mouse */
+}
+
+/* Mostrar texto cuando el mouse está encima */
+.trailer-icon[title]:hover::after {
+    content: attr(title); /* Mostrar el título del atributo */
+    position: absolute;
+    bottom: 60px; /* Coloca el texto justo encima del ícono */
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap; /* Evitar que el texto se divida en varias líneas */
 }

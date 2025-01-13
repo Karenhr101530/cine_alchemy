@@ -1,35 +1,20 @@
 <div class="main-content">
-    <h1 class="title">Culpa Tuya</h1>
-    <!-- Incrustar video de YouTube -->
-    <div class="video-container">
-        <iframe id="trailer" width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
+    <!-- Video de fondo -->
+    <div class="video-background">
+        <iframe id="trailer" 
+            src="" 
+            frameborder="0" 
+            allow="autoplay; encrypted-media; fullscreen; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
     </div>
-    <div class="ranking">#4 en Colombia</div>
-    <p class="description">
-        El amor entre Noah y Nick parece inquebrantable, a pesar de las maniobras de sus
-        padres por separarles. Pero el trabajo de él y la entrada de ella en la universidad abren
-        sus vidas a nuevas relaciones que removerán los cimientos no solo de su relación, sino
-        de la propia familia Leister. Cuando tantas personas están dispuestas a destruir una
-        relación, ¿puede realmente acabar bien?
-    </p>
-    <div class="metadata">
-        <span>IMDb 5.3</span>
-        <span>2h</span>
-        <span>2024</span>
-        <span class="badge">X-RAY</span>
-        <span class="badge">UHD</span>
-        <span class="badge">16+</span>
-    </div>
-    <div class="actions">
-        <button class="icon-btn">+</button>
-        <button class="icon-btn">👍</button>
-        <button class="icon-btn">👎</button>
-        <button class="icon-btn">↗️</button>
-    </div>
-    <div class="tags">
-        <span class="tag">Audiencia juvenil</span>
-        <span class="tag">Romance</span>
+
+    <!-- Superposición de contenido -->
+    <div class="overlay">
+        <h1 id="movie-title" class="title"></h1>
+        <p id="movie-subtitle" class="subtitle"></p>
+        <p id="movie-description" class="description"></p>
+        <div id="movie-metadata" class="metadata"></div>
+        <div id="movie-tags" class="tags"></div>
     </div>
 </div>
