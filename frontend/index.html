@@ -12,9 +12,10 @@
     <link rel="stylesheet" href="css/peliculas.css">
     <link rel="stylesheet" href="css/carrito.css">
     <link rel="stylesheet" href="css/detalles_peliculas.css">
+    <link rel="stylesheet" href="css/recibo.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
-    
+
 
     <!-- Alertas -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -22,6 +23,7 @@
 
 <body>
     <div class="home-screen">
+
         <!-- Fondo animado -->
         <div class="floating-movies">
             <!-- Se agregarán dinámicamente con JavaScript -->
@@ -31,8 +33,8 @@
         <nav class="navbar">
             <!-- Logo -->
             <a data-route="/" class="logo">
-                <img src="img/logo.png" data-route="/" alt="logo" > 
-                
+                <img src="img/logo.png" data-route="/" alt="logo">
+
             </a>
 
             <!-- Botones -->
@@ -41,11 +43,12 @@
                 <button data-route="/login" class="nav-btn login-btn" id="loginButton">Ingresar</button>
                 <button data-route="/register" class="nav-btn register-btn" id="registerButton">Registrarse</button>
                 <button data-route="/peliculas" class="nav-btn" id="peliculasButton">Películas</button>
+                <button data-route="/compras" class="nav-btn" id="comprasButton">Compras</button>
                 <button data-route="/logout" class="nav-btn" id="logoutButton">Salir</button>
-                <div data-route="/carrito" class="cart-icon-container" id="cartIcon">
+                <div class="cart-icon-container" id="cartIcon">
                     <i class="fas fa-shopping-cart" data-route="/carrito"></i>
-                    <span class="cart-count" id="cart-count" data-route="/carrito">0</span>
                 </div>
+                <span class="cart-count" id="cart-count">0</span>
             </div>
         </nav>
 

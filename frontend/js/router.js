@@ -1,6 +1,10 @@
 /* Navegador */
-export const navigateTo = (route) => {
-  history.pushState({}, "", route);
+export const navigateTo = (route, id = null) => {
+  let routeString = route;
+  if (id) {
+    routeString = route + '?' + id;
+  }
+  history.pushState({}, "", routeString);
   handleRouting(route);
 };
 
@@ -18,13 +22,24 @@ export const handleRouting = async (route) => {
     /* Rutas publicas */
     case "/":
       app.innerHTML = await (await fetch("views/home.html")).text();
+      document.getElementById("explorerMovies").addEventListener("click", (e) => {
+        if (verifiedToken()) {
+          const route = e.target.getAttribute("data-route");
+          navigateTo(route);
+        } else {
+          navigateTo('/login');
+        }
+      });
       break;
     case "/index.html":
       app.innerHTML = await (await fetch("views/home.html")).text();
       break;
     case "/login":
       app.innerHTML = await (await fetch("views/login.html")).text();
-      loadScript("login/login");
+      document.getElementById("signupLink").addEventListener("click", (e) => {
+        navigateTo('/register');
+      });
+      loadScript("auth/login");
       break;
     case "/logout":
       localStorage.removeItem("token");
@@ -32,7 +47,10 @@ export const handleRouting = async (route) => {
       break;
     case "/register":
       app.innerHTML = await (await fetch("views/register.html")).text();
-      loadScript("register/register");
+      document.getElementById("loginLink").addEventListener("click", (e) => {
+        navigateTo('/login');
+      });
+      loadScript("auth/register");
       break;
     /* Rutas privadas */
     case "/peliculas":
@@ -41,10 +59,31 @@ export const handleRouting = async (route) => {
         loadScript("peliculas/peliculas");
       }
       break;
+    case "/detalles_peliculas":
+      if (verifiedToken()) {
+        app.innerHTML = await (await fetch("views/detalles_peliculas.html")).text();
+        loadScript("peliculas/detalles_peliculas");
+      }
+      break;
     case "/carrito":
       if (verifiedToken()) {
-        app.innerHTML = await (await fetch("views/carrito.html")).text();
+        app.innerHTML = await (await fetch(`views/carrito.html`)).text();
+        document.getElementById("continue-shopping").addEventListener("click", (e) => {
+          navigateTo('/peliculas');
+        });
         loadScript("carrito/carrito");
+      }
+      break;
+    case "/recibo":
+      if (verifiedToken()) {
+        app.innerHTML = await (await fetch(`views/recibo.html`)).text();
+        loadScript("carrito/recibo");
+      }
+      break;
+    case "/compras":
+      if (verifiedToken()) {
+        app.innerHTML = await (await fetch(`views/compras.html`)).text();
+        loadScript("carrito/compras");
       }
       break;
     default:

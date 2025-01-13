@@ -1,0 +1,213 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #0a0a0a;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recibo {
+    background-color: #1a1a1a;
+    width: 100%;
+    max-width: 600px;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid #444;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Header del recibo */
+.recibo-header {
+    text-align: center;
+    border-bottom: 2px solid #444;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.logo-container {
+    margin-bottom: 10px;
+}
+
+.logo-container img {
+    height: 40px;
+    width: auto;
+}
+
+.recibo-header h1 {
+    font-size: 20px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.recibo-header p {
+    font-size: 14px;
+    color: #9ca3af;
+    margin: 2px 0;
+}
+
+#ordenId {
+    font-weight: bold;
+    color: #e11d48;
+}
+
+/* Detalles del usuario */
+.usuario-info {
+    background-color: #262626;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #444;
+}
+
+.usuario-info p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #9ca3af;
+}
+
+.usuario-info strong {
+    color: #ffffff;
+    margin-right: 5px;
+}
+
+/* Fecha límite */
+.detalle-fecha-limite {
+    background-color: #451a1a;
+    border: 1px solid #7f1d1d;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    color: #fecaca;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Películas */
+.movie-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background-color: #262626;
+    border: 1px solid #444;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    transition: transform 0.2s ease;
+}
+
+.movie-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.movie-poster {
+    width: 65px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+
+.movie-details {
+    flex: 1;
+}
+
+.movie-details h4 {
+    font-size: 16px;
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+
+.movie-details p {
+    font-size: 14px;
+    color: #9ca3af;
+}
+
+/* Total */
+.total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 2px solid #444;
+}
+
+.total span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+#total-precio {
+    color: #e11d48;
+    font-size: 20px;
+}
+
+/* Mensaje final */
+.info-adicional {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 2px solid #444;
+}
+
+.info-adicional p {
+    font-size: 14px;
+    color: #9ca3af;
+    margin: 5px 0;
+}
+
+@media (max-width: 640px) {
+    .recibo {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .movie-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .movie-poster {
+        margin: 0 0 10px 0;
+    }
+
+    .movie-details h4 {
+        font-size: 14px;
+    }
+
+    .total span {
+        font-size: 16px;
+    }
+
+    #total-precio {
+        font-size: 18px;
+    }
+}
+
+/* Efecto de brillo en los bordes */
+.recibo::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: 17px;
+    padding: 1px;
+    background: linear-gradient(45deg, #333, #e11d48, #333);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: destination-out;
+    pointer-events: none;
+}
