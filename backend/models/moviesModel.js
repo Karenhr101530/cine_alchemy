@@ -5,9 +5,9 @@ export const Movie = {
         const [rows] = await db.query("SELECT * FROM movies");
         return rows;
     },
-    findMovie: async (id) => {
+    findMovie: async (external_id) => {
         const [rows] = await db.query("SELECT * FROM movies WHERE external_id  = ?", [
-            id
+            external_id
         ]);
         return rows[0];
     },

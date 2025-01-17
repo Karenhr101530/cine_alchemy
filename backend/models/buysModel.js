@@ -1,10 +1,10 @@
 import db from "../config/db.js";
 
 const Buys = {
-  create: async (movie_id, precio, fecha_limite, json_recibo) => {
+  create: async (user_id, movie_id, precio, fecha_limite, json_recibo) => {
     const [result] = await db.query(
-      "INSERT INTO buys (movie_id, precio, fecha_limite, json_recibo) VALUES (?, ?, ?, ?)",
-      [movie_id, precio, fecha_limite, json_recibo]
+      "INSERT INTO buys (user_id, movie_id, precio, fecha_limite, json_recibo) VALUES (?, ?, ?, ?,?)",
+      [user_id, movie_id, precio, fecha_limite, json_recibo]
     );
     return result;
   },
