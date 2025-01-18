@@ -4,8 +4,8 @@
     --background-dark: #000000;
     --text-light: #f5f5f5;
     --border-color: #1f1f1f;
-    --header-background: rgba(229, 9, 20, 0.2); /* Transparente */
-    --hover-background: rgba(229, 9, 20, 0.1); /* Para filas al pasar el cursor */
+    --header-background: rgba(229, 9, 20, 0.2);
+    --hover-background: rgba(229, 9, 20, 0.1);
 }
 
 body {
@@ -13,58 +13,58 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--background-dark);
+    color: var(--text-light);
 }
 
-/* Estilo de la tabla */
+.table-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
 table {
-    width: 100%; /* Ancho de la tabla */
-    margin: 20px auto; /* Centrada */
-    border:  var(--border-color); /* Borde de 10px */
-    border-radius: 10px;
+    width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border-collapse: separate;
+    border-spacing: 0;
     box-shadow: 
-    0 0 0 1px rgba(255, 255, 255, 0.1),
-    0 4px 8px rgba(0, 0, 0, 0.5),
-    0 0 20px rgba(178, 7, 16, 0.3);
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        0 4px 8px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(178, 7, 16, 0.3);
 }
-    
 
-/* Encabezados de la tabla */
 th {
     padding: 12px 15px;
-    text-align: center;
+    text-align: left;
     background-color: var(--header-background);
     color: var(--text-light);
     font-size: 1rem;
-    font-weight: 300; /* Letras más delgadas */
-    border-radius: 1px;
+    font-weight: 300;
 }
 
-/* Celdas de la tabla */
 td {
     padding: 12px 15px;
-    text-align: center;
+    text-align: left;
     font-size: 0.9rem;
-    font-weight: 300; /* Letras más delgadas */
+    font-weight: 300;
 }
 
-/* Estilo al pasar el cursor sobre una fila */
 tr:hover {
     background-color: var(--hover-background);
     transition: background-color 0.3s ease;
 }
 
-/* Imagen en las celdas */
 td img {
     width: 60px;
     height: 90px;
     object-fit: cover;
     border-radius: 6px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Sombra en las imágenes */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Botón de acciones */
 button {
     background-color: var(--primary-color);
     color: white;
@@ -81,16 +81,78 @@ button:hover {
     transform: translateY(-2px);
 }
 
-/* Scroll en el contenedor de la tabla */
-table::-webkit-scrollbar {
-    width: 6px;
+/* Estilos móviles */
+@media screen and (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    table {
+        background: none;
+        box-shadow: none;
+        border: none;
+    }
+
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {
+        margin-bottom: 15px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        box-shadow: 
+            0 0 0 1px rgba(255, 255, 255, 0.1),
+            0 4px 8px rgba(0, 0, 0, 0.5),
+            0 0 20px rgba(178, 7, 16, 0.3);
+    }
+
+    td {
+        display: flex;
+        align-items: center;
+        padding: 10px 15px;
+        border: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    td:last-child {
+        border-bottom: none;
+    }
+
+    td:before {
+        content: attr(data-label);
+        font-weight: bold;
+        min-width: 120px;
+        margin-right: 15px;
+        color: var(--primary-color);
+    }
+
+    td img {
+        width: 50px;
+        height: 75px;
+        margin-left: auto;
+    }
+
+    tr:hover {
+        transform: translateY(-2px);
+        transition: transform 0.2s ease;
+    }
 }
 
-table::-webkit-scrollbar-thumb {
-    background-color: var(--primary-color);
-    border-radius: 10px;
-}
+@media screen and (max-width: 480px) {
+    td {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-table::-webkit-scrollbar-track {
-    background: var(--background-dark);
+    td:before {
+        margin-bottom: 5px;
+    }
+
+    td img {
+        margin: 10px auto;
+    }
 }
